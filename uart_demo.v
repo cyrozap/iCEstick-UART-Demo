@@ -65,8 +65,7 @@ module top(
 		if (received) begin
 			tx_byte <= rx_byte;
 			transmit <= 1;
-		end
-		if (is_transmitting) begin
+		end else begin
 			transmit <= 0;
 		end
 	end
