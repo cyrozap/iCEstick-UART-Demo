@@ -38,10 +38,7 @@ module top(
 	wire recv_error;
 
 	assign LED4 = recv_error;
-	assign LED3 = RS232_Tx_TTL;
-	assign LED2 = RS232_Rx_TTL;
-	assign LED1 = is_receiving;
-	assign LED0 = is_transmitting;
+	assign {LED3, LED2, LED1, LED0} = rx_byte[7:4];
 
 	uart #(
 		.baud_rate(9600),                 // The baud rate in kilobits/s
