@@ -11,17 +11,17 @@ OUTPUT = $(addsuffix .bin, $(basename $(TOP)))
 
 all: $(OUTPUT)
 
-%.bin: %.txt
+%.bin: %.tiles
 	$(GEN) $< $@
 
-%.txt: %.blif
+%.tiles: %.blif
 	$(PNR) -d $(DEVICE) -p $(PCF) -o $@ $<
 
 %.blif: %.v
 	$(SYN) -p "read_verilog $<; synth_ice40 -flatten -blif $@"
 
 clean:
-	rm -f *.bin *.blif *.txt
+	rm -f *.bin *.blif *.tiles
 
 flash: $(OUTPUT)
 	$(PROG) $<
