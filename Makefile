@@ -7,7 +7,7 @@ TOP = uart_demo.v
 PCF = icestick.pcf
 DEVICE = 1k
 
-OUTPUT = $(addsuffix .bin, $(basename $(TOP)))
+OUTPUT = $(patsubst %.v,%.bin,$(TOP))
 
 all: $(OUTPUT)
 
