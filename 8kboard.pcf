@@ -1,0 +1,21 @@
+# Generic iCEstick placement constraints file
+
+# LEDs
+set_io LED0 B5
+set_io LED1 B4
+set_io LED2 A2
+set_io LED3 A1
+set_io LED4 C5
+
+
+# FTDI Port B UART
+#set_io DCDn 1
+#set_io DSRn 2
+#set_io DTRn 3
+#set_io CTSn 4
+#set_io RTSn 7
+set_io RS232_Tx_TTL B12
+set_io RS232_Rx_TTL B10
+
+# 12 MHz clock
+set_io iCE_CLK J3
