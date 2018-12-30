@@ -6,7 +6,7 @@
 ## Prerequisites
 
 - [Yosys][1]
-- [arachne-pnr][2]
+- [nextpnr][2]
 - [IceStorm][3]
 
 ## Building
@@ -23,5 +23,5 @@ may need to run it with `sudo`.
 
 
 [1]: http://www.clifford.at/yosys/
-[2]: https://github.com/cseed/arachne-pnr
+[2]: https://github.com/YosysHQ/nextpnr
 [3]: http://www.clifford.at/icestorm/

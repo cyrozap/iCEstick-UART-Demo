@@ -1,11 +1,11 @@
 SYN = yosys
-PNR = arachne-pnr
+PNR = nextpnr-ice40
 GEN = icepack
 PROG = iceprog
 
 TOP = uart_demo.v
 PCF = icestick.pcf
-DEVICE = 1k
+PNR_FLAGS = --hx1k
 
 OUTPUT = $(patsubst %.v,%.bin,$(TOP))
 
@@ -14,14 +14,14 @@ all: $(OUTPUT)
 %.bin: %.asc
 	$(GEN) $< $@
 
-%.asc: %.blif
-	$(PNR) -d $(DEVICE) -p $(PCF) -o $@ $<
+%.asc: %.json
+	$(PNR) $(PNR_FLAGS) --pcf $(PCF) --json $< --asc $@
 
-%.blif: %.v
-	$(SYN) -p "read_verilog $<; synth_ice40 -flatten -blif $@"
+%.json: %.v
+	$(SYN) -p "read_verilog $<; synth_ice40 -flatten -json $@"
 
 clean:
-	rm -f *.asc *.bin *.blif
+	rm -f *.asc *.bin *.json
 
 flash: $(OUTPUT)
 	$(PROG) $<
