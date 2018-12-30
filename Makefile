@@ -11,17 +11,17 @@ OUTPUT = $(patsubst %.v,%.bin,$(TOP))
 
 all: $(OUTPUT)
 
-%.bin: %.tiles
+%.bin: %.asc
 	$(GEN) $< $@
 
-%.tiles: %.blif
+%.asc: %.blif
 	$(PNR) -d $(DEVICE) -p $(PCF) -o $@ $<
 
 %.blif: %.v
 	$(SYN) -p "read_verilog $<; synth_ice40 -flatten -blif $@"
 
 clean:
-	rm -f *.bin *.blif *.tiles
+	rm -f *.asc *.bin *.blif
 
 flash: $(OUTPUT)
 	$(PROG) $<
